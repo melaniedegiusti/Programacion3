@@ -1,0 +1,10 @@
+.footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: lightgray;
+    align-items: baseline;
+}
+.footer h4 {
+    padding: 20px;
+}
