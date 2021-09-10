@@ -1,10 +1,9 @@
 .footer{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
     background-color: lightgray;
-    align-items: baseline;
+    text-align: right; 
+    margin-top: 100px;
+    align-items: center;
 }
 .footer h4 {
-    padding: 20px;
+    padding: 40px;
 }

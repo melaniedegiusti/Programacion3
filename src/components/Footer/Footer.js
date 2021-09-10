@@ -4,8 +4,8 @@ import './footer.css';
 function Footer(){
     return(
         <div className='footer'>
-                <h4> Melanie De Giusti</h4>
-                <h4> Luciano Pozzoli</h4>
+                <h4> Melanie De Giusti  / Luciano Pozzoli</h4>
+                {/* <h4> Luciano Pozzoli</h4> */}
          </div>
         
     )
