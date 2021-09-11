@@ -1,8 +1,9 @@
  .cards{
-    /* display: flex;
+    display: flex;
     justify-content: space-between; 
-    flex-direction: row; */
-    height: 5200px;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    /* height: 6700px;  */
     /* width: 30%; */
     padding: 30px;
  } 

@@ -6,7 +6,7 @@ class Movies extends Component {
     constructor(){
         super()
         this.state = {
-            peliculas: []
+            peliculas: [],
         }
     }
     componentDidMount(){
@@ -26,19 +26,22 @@ class Movies extends Component {
     }
 
 
-    componentDidUpdate(){
-        console.log("component did update")
+    agregarMas(){
+        // FALTA PARA AGREGAR MAS PELICULAS
     }
     
     render() {
         console.log('renderizado')
         console.log(this.state.peliculas)
         return (
+            <>
             <div className="cards">
                 {this.state.peliculas.map( (pelicula) => (
                     <Card key={pelicula.id} datosPelicula={pelicula} />
                 ))}
             </div>
+            <button onClick={()=>this.agregarMas()}>Mas Peliculas</button>
+            </>
         );
     }
 

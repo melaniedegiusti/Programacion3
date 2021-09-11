@@ -13,14 +13,14 @@
     position: relative;
     float: left;
     margin-left: 15px;
-    width: 30%;
+    width: 22%;
     margin-top: 10px; 
      
 }
  .info{
     /* padding-top: 3px; */
     outline: 1px solid lightgray;
-    height: 275px; 
+    /* height: 275px;  */
  }
  .movie-card img {
     padding-top: 10px;
@@ -29,4 +29,9 @@
 
 .movie-card h4{
     padding: 5px;
+}
+
+.more{
+    font-weight: bold;
+    
 }
