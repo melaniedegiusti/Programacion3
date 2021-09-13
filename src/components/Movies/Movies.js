@@ -9,9 +9,7 @@ class Movies extends Component {
             peliculas: [],
         }
     }
-    componentDidMount(){
-        console.log("component did mount")
-        const url = 'https://api.themoviedb.org/3/movie/popular?api_key=c40a745984e9eb09a7b68f074f0aa025';
+    ApiCall(url) {
         fetch(url)
             .then( respuesta => respuesta.json() )
             .then(data => {
@@ -21,8 +19,9 @@ class Movies extends Component {
                 })
             })
             .catch( err => console.log(err))
-
-
+    }
+    componentDidMount(){
+       this.ApiCall('https://api.themoviedb.org/3/movie/popular?api_key=c40a745984e9eb09a7b68f074f0aa025')
     }
 
 
@@ -33,13 +32,21 @@ class Movies extends Component {
     render() {
         console.log('renderizado')
         console.log(this.state.peliculas)
+        
+        let contenido;
+
+        if(this.state.peliculas == "") {
+            contenido = <p>Cargando...</p>
+        } else {
+            contenido = <div className="cards">
+            {this.state.peliculas.map( (pelicula) => (
+                <Card key={pelicula.id} datosPelicula={pelicula} />
+            ))}
+        </div>
+        }
         return (
             <>
-            <div className="cards">
-                {this.state.peliculas.map( (pelicula) => (
-                    <Card key={pelicula.id} datosPelicula={pelicula} />
-                ))}
-            </div>
+            {contenido}
             <button onClick={()=>this.agregarMas()}>Mas Peliculas</button>
             </>
         );
