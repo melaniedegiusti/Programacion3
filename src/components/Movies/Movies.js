@@ -7,31 +7,42 @@ class Movies extends Component {
         super()
         this.state = {
             peliculas: [],
+            vueltas: 1,
         }
     }
     ApiCall(url) {
         fetch(url)
             .then( respuesta => respuesta.json() )
             .then(data => {
-                console.log(data);
-                this.setState({
+                    this.setState({
                     peliculas: data.results,
                 })
             })
             .catch( err => console.log(err))
     }
-    componentDidMount(){
-       this.ApiCall('https://api.themoviedb.org/3/movie/popular?api_key=c40a745984e9eb09a7b68f074f0aa025')
-    }
-
-
-    agregarMas(){
-        // FALTA PARA AGREGAR MAS PELICULAS
+    agregarPeliculas(){
+        fetch("https://api.themoviedb.org/3/movie/popular?api_key=c40a745984e9eb09a7b68f074f0aa025&language=en-US&page="+ (this.state.vueltas + 1))
+            .then(respuesta=> respuesta.json())
+            .then((data)=> {
+                this.setState({
+                peliculas: this.state.peliculas.concat(data.results),
+                vueltas: this.state.vueltas + 1,
+                })
+            })
     }
     
+    
+    componentDidMount(){
+       this.ApiCall('https://api.themoviedb.org/3/movie/popular?api_key=c40a745984e9eb09a7b68f074f0aa025&language=en-US&page='+ this.state.vueltas)
+
+    }
+    componentDidUpdate(){
+        
+    }
+    
+
+    
     render() {
-        console.log('renderizado')
-        console.log(this.state.peliculas)
         
         let contenido;
 
@@ -47,7 +58,7 @@ class Movies extends Component {
         return (
             <>
             {contenido}
-            <button onClick={()=>this.agregarMas()}>Mas Peliculas</button>
+            <button onClick={()=>this.agregarPeliculas()}>Mas Peliculas</button>
             </>
         );
     }
