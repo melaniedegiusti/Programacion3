@@ -30,6 +30,11 @@ class Movies extends Component {
                 })
             })
     }
+    eliminarTarjeta(trj){
+        this.setState({
+            peliculas: this.state.peliculas.pop(trj)
+        })
+    }
     
     
     componentDidMount(){
@@ -51,7 +56,9 @@ class Movies extends Component {
         } else {
             contenido = <div className="cards">
             {this.state.peliculas.map( (pelicula) => (
+                <>
                 <Card key={pelicula.id} datosPelicula={pelicula} />
+                </>
             ))}
         </div>
         }
