@@ -1,5 +1,6 @@
 import React from 'react';
-import './topbar.css';
+import './topbar.css'
+import Buscador from '../Buscador/Buscador';
 
 function Topbar(){
     return(
@@ -12,7 +13,7 @@ function Topbar(){
                     fotos
                 </p>
                 <p>
-                    buscador
+                    <Buscador />
                 </p>
             </div>
         </nav>
