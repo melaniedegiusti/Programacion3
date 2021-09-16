@@ -15,13 +15,14 @@
     margin-left: 15px;
     width: 22%;
     margin-top: 10px; 
+    margin-bottom: 10px; 
      
 }
- .info{
+ /* .info{
     /* padding-top: 3px; */
-    outline: 1px solid lightgray;
-    /* height: 275px;  */
- }
+    /* outline: 1px solid lightgray; */
+    /* height: 275px;  
+ } */
  .movie-card img {
     padding-top: 10px;
     width: 70%;
@@ -37,4 +38,9 @@
 
 .hide{
     display: none;
+}
+
+.borrar{
+    display: flex;
+    margin-left: auto;
 }

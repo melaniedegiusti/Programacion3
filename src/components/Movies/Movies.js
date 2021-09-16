@@ -16,6 +16,7 @@ class Movies extends Component {
             .then(data => {
                     this.setState({
                     peliculas: data.results,
+                    originales: data.results,
                 })
             })
             .catch( err => console.log(err))
@@ -44,6 +45,20 @@ class Movies extends Component {
     componentDidUpdate(){
         
     }
+
+    borrarTarjeta(id){
+        // console.log(id);
+        const resto = this.state.peliculas.filter( pelicula => pelicula.id !== id);
+        this.setState({
+            peliculas: resto,
+        })
+    }
+
+    reset(){
+        this.setState({
+            peliculas: this.state.originales,
+        })
+    }
     
 
     
@@ -51,13 +66,17 @@ class Movies extends Component {
         
         let contenido;
 
-        if(this.state.peliculas == "") {
+        if(this.state.peliculas === "") {
             contenido = <p>Cargando...</p>
         } else {
             contenido = <div className="cards">
             {this.state.peliculas.map( (pelicula) => (
                 <>
-                <Card key={pelicula.id} datosPelicula={pelicula} />
+                <Card 
+                key={pelicula.id} 
+                datosPelicula={pelicula} 
+                borrar={(peliculaBorrar)=>this.borrarTarjeta(peliculaBorrar)}
+                />
                 </>
             ))}
         </div>
@@ -66,6 +85,7 @@ class Movies extends Component {
             <>
             {contenido}
             <button onClick={()=>this.agregarPeliculas()}>Mas Peliculas</button>
+            <button onClick={()=>this.reset()}>Reset</button>
             </>
         );
     }
