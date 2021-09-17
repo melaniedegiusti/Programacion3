@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './topbar.css'
 import FilterField from '../FilterField/FilterField';
 
-function Topbar (){
+function Topbar (props){
     
         return(
             <>
@@ -14,8 +14,9 @@ function Topbar (){
                     <p>
                         fotos
                     </p>
+                    
                     <div className="buscador">
-                        <FilterField filtrarPeliculas={(param)=>this.filtrarPeliculas(param)} />
+                        <FilterField filtrarPeliculas={(textoAFiltrar)=> props.filtrarPeliculas(textoAFiltrar)} />
                     </div> 
                 </div>
             </nav>

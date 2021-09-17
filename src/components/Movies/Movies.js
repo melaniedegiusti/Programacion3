@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Card from '../Card/Card';
 import "./movies.css"
-import FilterField from '../FilterField/FilterField';
+import Topbar from '../Topbar/Topbar';
 
 class Movies extends Component {
     constructor(){
@@ -61,8 +61,8 @@ class Movies extends Component {
         })
     }
     
-    filtrarPeliculas(textoFiltrar){
-        let peliculasFiltradas = this.state.originales.filter(pelicula => pelicula.title.toLowerCase().includes(textoFiltrar.toLowerCase()));
+    filtrarPeliculas(textoAFiltrar){
+        let peliculasFiltradas = this.state.originales.filter(pelicula => pelicula.title.toLowerCase().includes(textoAFiltrar.toLowerCase()));
         this.setState({
             peliculas: peliculasFiltradas,
         })
@@ -90,8 +90,9 @@ class Movies extends Component {
         return (
             <>
             <div className="buscadorr">
-                <FilterField filtrarPeliculas={(param)=>this.filtrarPeliculas(param)} />
+                <Topbar filtrarPeliculas={(textoAFiltrar)=>this.filtrarPeliculas(textoAFiltrar)} />
             </div> 
+            <h3 className="h3"> Peliculas más populares</h3>
             {contenido}
             <button onClick={()=>this.agregarPeliculas()} className="masPeliculas">Mas Peliculas</button>
             <button onClick={()=>this.reset()} className="reset">Reset</button>
