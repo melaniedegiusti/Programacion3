@@ -1,9 +1,12 @@
 .header{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: lightgray;
     align-items: baseline;
+}
+.header h1{
+    padding-left: 100px;
 }
 
 .header2{
@@ -14,4 +17,8 @@
 }
 .header2 p{
     padding: 30px;
+}
+
+.buscador{
+    padding: 43px;
 }

@@ -23,12 +23,13 @@ class FilterField extends Component {
     render() {
         return (
             <form onSubmit={this.enviarSubmit}> 
-                <label> Filter cards: </label> 
+                {/* <label> Filter cards: </label>  */}
                 <input 
                 type="text" 
                 name="name" 
                 onChange={(e)=> this.controlCambios(e)}
                 value={this.state.filterBy}
+                placeholder="Buscar pelicula"
                 />
             </form>
         );

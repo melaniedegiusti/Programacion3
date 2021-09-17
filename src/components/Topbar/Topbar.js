@@ -10,13 +10,13 @@ function Topbar (){
                 <h1> "Nombre de la app"</h1>
     
                 <div className='header2'>
-                    <p> Ordenar ASC / DESC</p>
+                    {/* <p> Ordenar ASC / DESC</p> */}
                     <p>
                         fotos
                     </p>
-                    {/* <div className="buscador">
+                    <div className="buscador">
                         <FilterField filtrarPeliculas={(param)=>this.filtrarPeliculas(param)} />
-                    </div> */}
+                    </div> 
                 </div>
             </nav>
             </>

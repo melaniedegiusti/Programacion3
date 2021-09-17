@@ -30,7 +30,7 @@ class Card extends Component {
     render() {
         return(
             <div className='movie-card'>
-                <button onClick={()=> this.props.borrar(this.props.datosPelicula.id)} className='borrar'>Borrar</button>
+                <button onClick={()=> this.props.borrar(this.props.datosPelicula.id)} className='borrar'>X</button>
                 <br></br>
                 <img src={`https://image.tmdb.org/t/p/w342/${this.props.datosPelicula.poster_path}`} /> 
                 <div className="info">
