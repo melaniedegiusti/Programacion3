@@ -93,8 +93,8 @@ class Movies extends Component {
                 <FilterField filtrarPeliculas={(param)=>this.filtrarPeliculas(param)} />
             </div>
             {contenido}
-            <button onClick={()=>this.agregarPeliculas()}>Mas Peliculas</button>
-            <button onClick={()=>this.reset()}>Reset</button>
+            <button onClick={()=>this.agregarPeliculas()} className="masPeliculas">Mas Peliculas</button>
+            <button onClick={()=>this.reset()} className="reset">Reset</button>
             </>
         );
     }
