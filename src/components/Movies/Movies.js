@@ -41,15 +41,10 @@ class Movies extends Component {
             peliculas: this.state.peliculas.pop(trj)
         })
     }
-
-    
     
     componentDidMount(){
        this.ApiCall('https://api.themoviedb.org/3/movie/popular?api_key=c40a745984e9eb09a7b68f074f0aa025&language=en-US&page='+ this.state.vueltas)
 
-    }
-    componentDidUpdate(){
-        
     }
 
     borrarTarjeta(id){
