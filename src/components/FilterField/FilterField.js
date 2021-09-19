@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./filterField.css"
 
 class FilterField extends Component {
     constructor(props){
@@ -29,7 +30,8 @@ class FilterField extends Component {
                 name="name" 
                 onChange={(e)=> this.controlCambios(e)}
                 value={this.state.filterBy}
-                placeholder="Buscar pelicula"
+                placeholder="Buscar pelicula.."
+                className="input"
                 />
             </form>
         );

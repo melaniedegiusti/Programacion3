@@ -51,6 +51,22 @@
    font-size: 25px;
  }
 
- 
+.formato{
+   display: flex;
+   align-items: center;
+   margin-left: 88%;
+   background-color: lightgray;
+   color: black;
+   border: 2px solid rgb(144 131 131 / 34%);
+   transition-duration: 0.4s;
+   font-size: 12px;
+   border-radius: 8px;
+   width: 8%;
+} 
+.formato:hover{
+   background-color: grey;
+   color: white;
+   cursor: pointer;
+}
  
 

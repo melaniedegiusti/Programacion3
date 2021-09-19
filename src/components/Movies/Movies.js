@@ -123,9 +123,9 @@ class Movies extends Component {
                 <Topbar filtrarPeliculas={(textoAFiltrar)=>this.filtrarPeliculas(textoAFiltrar)} />
             </div> 
             <h3 className="h3"> Peliculas más populares</h3>
-            <button onClick={()=>this.cambiarFormato()}>Cambiar Formato</button>
+            <button onClick={()=>this.cambiarFormato()}className="formato">Cambiar Formato</button>
             {contenido}
-            <button onClick={()=>this.agregarPeliculas()} className="masPeliculas">Mas Peliculas</button>
+            <button onClick={()=>this.agregarPeliculas()} className="masPeliculas">Más Peliculas</button>
             <button onClick={()=>this.reset()} className="reset">Reset</button>
             </>
         );

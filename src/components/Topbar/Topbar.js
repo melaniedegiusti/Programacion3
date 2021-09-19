@@ -7,14 +7,11 @@ function Topbar (props){
         return(
             <>
             <nav className='header'>
-                <h1> "Nombre de la app"</h1>
-    
+                <div className="titulo">
+                    <h1 className="nombre"> MOVIECOM</h1>
+                    <img src="logo.png" className="logo"></img>
+                </div>
                 <div className='header2'>
-                    {/* <p> Ordenar ASC / DESC</p> */}
-                    <p>
-                        fotos
-                    </p>
-                    
                     <div className="buscador">
                         <FilterField filtrarPeliculas={(textoAFiltrar)=> props.filtrarPeliculas(textoAFiltrar)} />
                     </div> 

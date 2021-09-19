@@ -71,3 +71,19 @@
     color: white;
     cursor: pointer;
 }
+
+.movie-card-row{
+    font-family: 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
+    outline: 2px solid lightgray;
+    text-align: center;
+    position: relative;
+    float: left;
+    /* margin-left: 3%; */
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0.15rem 1.75rem 0 rgb(58 59 69 / 15%);    
+}
+.movie-card-row:hover {
+    box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
+}
