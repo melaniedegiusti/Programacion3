@@ -10,6 +10,7 @@ class Movies extends Component {
             peliculas: "",
             vueltas: 1,
             peliculasFiltered: "",
+            tarjetasEnFila: false,
         }
     }
     ApiCall(url) {
@@ -70,6 +71,18 @@ class Movies extends Component {
             peliculasFiltered: peliculasFiltradas,
         })
     }
+
+    cambiarFormato(){
+        if(this.state.tarjetasEnFila == true){
+            this.setState({
+                tarjetasEnFila: false,
+            })
+        } else {
+            this.setState({
+                tarjetasEnFila: true,
+            })
+        }
+    }
     
     render() {
         
@@ -85,6 +98,7 @@ class Movies extends Component {
                 key={pelicula.id} 
                 datosPelicula={pelicula} 
                 borrar={(peliculaBorrar)=>this.borrarTarjeta(peliculaBorrar)}
+                direccion={this.state.tarjetasEnFila}
                 />
                 </>
             ))}
@@ -97,6 +111,7 @@ class Movies extends Component {
                 key={pelicula.id} 
                 datosPelicula={pelicula} 
                 borrar={(peliculaBorrar)=>this.borrarTarjeta(peliculaBorrar)}
+                direccion={this.state.tarjetasEnFila}
                 />
                 </>
             ))}
@@ -108,6 +123,7 @@ class Movies extends Component {
                 <Topbar filtrarPeliculas={(textoAFiltrar)=>this.filtrarPeliculas(textoAFiltrar)} />
             </div> 
             <h3 className="h3"> Peliculas más populares</h3>
+            <button onClick={()=>this.cambiarFormato()}>Cambiar Formato</button>
             {contenido}
             <button onClick={()=>this.agregarPeliculas()} className="masPeliculas">Mas Peliculas</button>
             <button onClick={()=>this.reset()} className="reset">Reset</button>
