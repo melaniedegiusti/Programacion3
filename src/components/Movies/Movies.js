@@ -7,8 +7,9 @@ class Movies extends Component {
     constructor(){
         super()
         this.state = {
-            peliculas: [],
+            peliculas: "",
             vueltas: 1,
+            peliculasFiltered: "",
         }
     }
     ApiCall(url) {
@@ -28,6 +29,7 @@ class Movies extends Component {
             .then((data)=> {
                 this.setState({
                 peliculas: this.state.peliculas.concat(data.results),
+                agregadas: data.results,
                 vueltas: this.state.vueltas + 1,
                 })
             })
@@ -37,6 +39,7 @@ class Movies extends Component {
             peliculas: this.state.peliculas.pop(trj)
         })
     }
+
     
     
     componentDidMount(){
@@ -62,9 +65,9 @@ class Movies extends Component {
     }
     
     filtrarPeliculas(textoAFiltrar){
-        let peliculasFiltradas = this.state.originales.filter(pelicula => pelicula.title.toLowerCase().includes(textoAFiltrar.toLowerCase()));
+        let peliculasFiltradas = this.state.peliculas.filter(pelicula => pelicula.title.toLowerCase().includes(textoAFiltrar.toLowerCase()));
         this.setState({
-            peliculas: peliculasFiltradas,
+            peliculasFiltered: peliculasFiltradas,
         })
     }
     
@@ -74,6 +77,18 @@ class Movies extends Component {
 
         if(this.state.peliculas === "") {
             contenido = <p>Cargando...</p>
+        } else if(this.state.peliculasFiltered !== ""){
+            contenido = <div className="cards">
+            {this.state.peliculasFiltered.map( (pelicula) => (
+                <>
+                <Card 
+                key={pelicula.id} 
+                datosPelicula={pelicula} 
+                borrar={(peliculaBorrar)=>this.borrarTarjeta(peliculaBorrar)}
+                />
+                </>
+            ))}
+        </div>
         } else {
             contenido = <div className="cards">
             {this.state.peliculas.map( (pelicula) => (
