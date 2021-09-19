@@ -1,9 +1,33 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './topbar.css'
 import FilterField from '../FilterField/FilterField';
 
-function Topbar (props){
-    
+
+class Topbar extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            changeButton: false,
+            text: "horizontal"
+        }
+    }
+    viewMore(evento){
+        if (this.state.changeButton) {
+            this.setState({
+                changeButton: false,
+                text: 'horizontal'
+            });
+        } else{
+            this.setState({
+                changeButton: true,
+                text: 'Vertical'
+            });
+        }
+
+        
+    }
+
+    render() {
         return(
             <>
             <nav className='header'>
@@ -11,15 +35,17 @@ function Topbar (props){
                     <h1 className="nombre"> MOVIECOM</h1>
                     <img src="logo.png" className="logo"></img>
                 </div>
+                      
                 <div className='header2'>
                     <div className="buscador">
-                        <FilterField filtrarPeliculas={(textoAFiltrar)=> props.filtrarPeliculas(textoAFiltrar)} />
+                        <img src="formato.jpg" onClick={()=>this.props.cambiarFormato()} className="formato"></img>
+                        <FilterField filtrarPeliculas={(textoAFiltrar)=> this.props.filtrarPeliculas(textoAFiltrar)} />
                     </div> 
                 </div>
             </nav>
             </>
         )
-    
+    }
 
 }
 

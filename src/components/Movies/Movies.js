@@ -11,6 +11,7 @@ class Movies extends Component {
             vueltas: 1,
             peliculasFiltered: "",
             tarjetasEnFila: false,
+            text: "horizontal",
         }
     }
     ApiCall(url) {
@@ -76,13 +77,16 @@ class Movies extends Component {
         if(this.state.tarjetasEnFila == true){
             this.setState({
                 tarjetasEnFila: false,
+                text:"horizontal"
             })
         } else {
             this.setState({
                 tarjetasEnFila: true,
+                text:"Vertical"
             })
         }
     }
+
     
     render() {
         
@@ -120,10 +124,10 @@ class Movies extends Component {
         return (
             <>
             <div className="buscadorr">
-                <Topbar filtrarPeliculas={(textoAFiltrar)=>this.filtrarPeliculas(textoAFiltrar)} />
+                <Topbar filtrarPeliculas={(textoAFiltrar)=>this.filtrarPeliculas(textoAFiltrar)} cambiarFormato= {()=>this.cambiarFormato()}/>
             </div> 
             <h3 className="h3"> Peliculas más populares</h3>
-            <button onClick={()=>this.cambiarFormato()}className="formato">Cambiar Formato</button>
+            {/* <button onClick={()=>this.cambiarFormato()}className="formato">Cambiar Formato</button> */}
             {contenido}
             <button onClick={()=>this.agregarPeliculas()} className="masPeliculas">Más Peliculas</button>
             <button onClick={()=>this.reset()} className="reset">Reset</button>
