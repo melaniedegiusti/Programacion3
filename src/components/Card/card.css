@@ -20,6 +20,8 @@
 }
 .movie-card:hover {
     box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
+    width: 24%;
+    transition: 0.3s;
 }
 
  /* .info{
@@ -44,7 +46,8 @@
     font-weight: bold; 
 }
 .more:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: rgb(34, 181, 244);
     cursor: pointer;
 }
 
@@ -60,14 +63,14 @@
     background-color: white;
     color: black;
     border: 1px solid gray;
-    transition-duration: 0.4s;
+    transition-duration: 0.3s;
     font-size: 16px;
     padding-left: 10px;
     padding-right: 10px;
 }
 
 .borrar:hover {
-    background-color: grey; /* Green */
+    background-color: rgb(187, 28, 28); /* Green */
     color: white;
     cursor: pointer;
 }
