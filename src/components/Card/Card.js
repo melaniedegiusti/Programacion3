@@ -31,14 +31,13 @@ class Card extends Component {
         return(
             <div className={this.props.direccion ? "movie-card-row" : "movie-card"}>
                 <button onClick={()=> this.props.borrar(this.props.datosPelicula.id)} className='borrar'>X</button>
-                <br></br>
                 <img src={`https://image.tmdb.org/t/p/w342/${this.props.datosPelicula.poster_path}`} /> 
                 <div className="info">
                 <h4>{this.props.datosPelicula.title}</h4>
                 <p>{this.props.datosPelicula.overview}</p>
                 <div className={ this.state.viewMore ? '' : 'hide'}>
-                <p>Idioma: {this.props.datosPelicula.original_language}</p>
-                <p>Fecha de estreno: {this.props.datosPelicula.release_date}</p>
+                    <p>Idioma: {this.props.datosPelicula.original_language}</p>
+                    <p>Fecha de estreno: {this.props.datosPelicula.release_date}</p>
                 </div>
                 <p className="more" onClick={()=> this.viewMore()}>{this.state.text}</p>
                 </div>

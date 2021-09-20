@@ -8,14 +8,16 @@ class Movies extends Component {
         super()
         this.state = {
             peliculas: "",
+            originales:"",
             vueltas: 1,
             peliculasFiltered: "",
             tarjetasEnFila: false,
             text: "horizontal",
         }
     }
-    ApiCall(url) {
-        fetch(url)
+
+    componentDidMount(){
+        fetch('https://api.themoviedb.org/3/movie/popular?api_key=c40a745984e9eb09a7b68f074f0aa025&language=en-US&page='+ this.state.vueltas)
             .then( respuesta => respuesta.json() )
             .then(data => {
                     this.setState({
@@ -25,6 +27,7 @@ class Movies extends Component {
             })
             .catch( err => console.log(err))
     }
+
     agregarPeliculas(){
         fetch("https://api.themoviedb.org/3/movie/popular?api_key=c40a745984e9eb09a7b68f074f0aa025&language=en-US&page="+ (this.state.vueltas + 1))
             .then(respuesta=> respuesta.json())
@@ -36,19 +39,8 @@ class Movies extends Component {
                 })
             })
     }
-    eliminarTarjeta(trj){
-        this.setState({
-            peliculas: this.state.peliculas.pop(trj)
-        })
-    }
-    
-    componentDidMount(){
-       this.ApiCall('https://api.themoviedb.org/3/movie/popular?api_key=c40a745984e9eb09a7b68f074f0aa025&language=en-US&page='+ this.state.vueltas)
-
-    }
 
     borrarTarjeta(id){
-        // console.log(id);
         const resto = this.state.peliculas.filter( pelicula => pelicula.id !== id);
         this.setState({
             peliculas: resto,
@@ -88,33 +80,31 @@ class Movies extends Component {
         let contenido;
 
         if(this.state.peliculas === "") {
-            contenido = <p>Cargando...</p>
+            contenido = <p> Cargando...</p>
         } else if(this.state.peliculasFiltered !== ""){
-            contenido = <div className="cards">
-            {this.state.peliculasFiltered.map( (pelicula) => (
-                <>
-                <Card 
-                key={pelicula.id} 
-                datosPelicula={pelicula} 
-                borrar={(peliculaBorrar)=>this.borrarTarjeta(peliculaBorrar)}
-                direccion={this.state.tarjetasEnFila}
-                />
-                </>
-            ))}
-        </div>
+            contenido = 
+            <div className="cards">
+                {this.state.peliculasFiltered.map( (pelicula) => (
+                    <Card 
+                    key={pelicula.id} 
+                    datosPelicula={pelicula} 
+                    borrar={(peliculaBorrar)=>this.borrarTarjeta(peliculaBorrar)}
+                    direccion={this.state.tarjetasEnFila}
+                    />
+                ))}
+            </div>
         } else {
-            contenido = <div className="cards">
-            {this.state.peliculas.map( (pelicula) => (
-                <>
-                <Card 
-                key={pelicula.id} 
-                datosPelicula={pelicula} 
-                borrar={(peliculaBorrar)=>this.borrarTarjeta(peliculaBorrar)}
-                direccion={this.state.tarjetasEnFila}
-                />
-                </>
-            ))}
-        </div>
+            contenido = 
+            <div className="cards">
+                {this.state.peliculas.map((pelicula) => (
+                    <Card 
+                    key={pelicula.id} 
+                    datosPelicula={pelicula} 
+                    borrar={(peliculaBorrar)=>this.borrarTarjeta(peliculaBorrar)}
+                    direccion={this.state.tarjetasEnFila}
+                    />
+                ))}
+            </div>
         }
         return (
             <>
@@ -122,7 +112,6 @@ class Movies extends Component {
                 <Topbar filtrarPeliculas={(textoAFiltrar)=>this.filtrarPeliculas(textoAFiltrar)} cambiarFormato= {()=>this.cambiarFormato()}/>
             </div> 
             <h3 className="h3"> PELICULAS MÁS POPULARES</h3>
-            {/* <button onClick={()=>this.cambiarFormato()}className="formato">Cambiar Formato</button> */}
             {contenido}
             <button onClick={()=>this.agregarPeliculas()} className="masPeliculas">Más Peliculas</button>
             <button onClick={()=>this.reset()} className="reset">Reset</button>
